@@ -1,0 +1,52 @@
+/* Terms of use body and header fonts */
+body {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    margin-left: 30px;
+    margin-right: 30px;
+  }
+
+  p{
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    padding-left: 10px;
+    padding-right: 0px;
+  }
+
+  p1{
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    text-align: center;
+  }
+  
+  
+  h1 {
+    font-size: 32px;
+    font-weight: bold;
+    margin: 0;
+    padding-top: 20px;
+    padding-bottom: 5px;
+    text-align: center;
+  }
+  
+
+  h2 {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0;
+    padding-top: 2px;
+    padding-bottom: 25px;
+    text-align: center;
+  }
+  
+
+  h3 {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 30px 0 0px;
+  }
+  

@@ -1,0 +1,434 @@
+/* VARIABLES ------------------------------------------------------------------------  */
+
+body {
+  --color-primary:  #fbfaff;
+  --color-shadow: #b1a8d1;
+  --color-button: #e5e5fa;
+  --color-sidebar: #d6d7ff;
+  --color-sidebar-border: #808080;
+  --color-text: #333333;
+  --color-block: #f7f7ff;
+  --color-userbar-border: #b6a6f7;
+  --color-lightline: #787878;
+  --color-gradient: #4723c8;
+  --color-home-font: #0b022300;
+  --color-setting-button: #8164ed;
+  --color-setting-button-hover:#4723c8;
+  
+}
+
+/* TOPBAR COMPONENT ------------------------------------------------------------------------  */
+
+.top-bar {
+  background-color: var(--color-primary);
+  position: fixed; 
+  background-image: url('../../html/images/Taskeepername.png'); /*taskeeper name image */
+  background-repeat: no-repeat;
+  background-position: 70px;
+  background-size: 210px;
+
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 54px;
+  box-shadow: 0px 2px 2px var(--color-shadow); 
+  z-index: 999; /*forces the top bar to be above the sidebar*/
+
+}
+
+.menubutton {
+  background-image: url('../../html/images/menubars.png');
+  background-repeat: no-repeat;
+  background-position: 12px;
+  background-size: 25px;
+  padding: 21px 25px;
+  background-color: var(--color-primary);
+  border-radius: 5px; /*rounds the corners*/
+  border: none;
+  cursor: pointer;
+  margin-left: 13px;
+  margin-top: 6px;
+  z-index: 999;
+  
+}
+
+.menubutton:hover {
+  background-color: var(--color-button);
+}
+
+.projectbutton {
+  float: right;
+  background-image: url('../../html/images/folder1.png');
+  background-repeat: no-repeat;
+  background-position: 10px;
+  background-size: 30px;
+  padding: 21px 25px;
+  font-family:'Courier New', Courier, monospace;
+  background-color: var(--color-primary);
+  border-radius: 5px; /*rounds the corners*/
+  border: none;
+  cursor: pointer;
+  margin-right: 13px;
+  margin-top: 6px;
+  z-index: 999;
+  
+}
+
+.projectbutton:hover {
+  background-color: var(--color-button);
+}
+
+/* USERBAR COMPONENT ------------------------------------------------------------------------  */
+
+
+.userbar { /* content of the userbar */
+    position: fixed; 
+    top: 46px; /*pushes the userbar down the height of the topbar*/
+    left: 0;
+    bottom: 0;
+    width: 270px;
+    background-color: var(--color-sidebar);
+    border-right: 1px solid var(--color-sidebar-border);
+  }
+  
+  .userbar .uul { /*CLICKABLE LIST*/
+
+    margin: 11px; /*margin of the clickable list elements */
+    margin-top: 9px;
+    padding: 0; /* takes away the padding*/
+    list-style: none; /*takes away the bullet points */
+  }  
+  
+  .userbar a:hover { /*makes the blocks of the clickable list grey when we put the mouse on them*/
+    background-color: var(--color-button);
+  }
+
+   /*hides the userbar when clicking on the menu button*/ 
+   /*TO-DO: WHEN WE HAVE THE MAINSCREEN MAKE IT RESIZE THE MAINSCREEN ACCORDING TO THE BAR*/
+  .userbar.hide {
+    width: 0px;
+  }
+
+  .userbar.hide .uul,
+.userbar.hide span,
+.userbar.hide .home,
+.userbar.hide .userheader,
+.userbar.hide .profilePicture,
+.userbar.hide .homeicon,
+.userbar.hide .headericon,
+.userbar.hide .settingsbutton,
+.userbar.hide .logoutbutton {
+  display: none;
+}
+
+/*font of the userbar clickable list*/
+.userbar a { /* font styling of the clickable list */
+  display: block;
+  padding: 11px 12px; /* distance from the border */
+  margin-top: 1px;
+
+  background-image: url('../../html/images/groupof3.png');
+  background-repeat: no-repeat;
+  background-position: 10px;
+  background-size: 20px;
+  padding-left: 35px ; /*distance of the text from the border, to let some space for the image*/
+
+  text-decoration: none; /* takes away the underline */
+  color: var(--color-text); /*color of the text*/
+  background-color: var(--color-block); /*background of the block*/
+  border: 1px solid var(--color-userbar-border); /* Add a light gray border */
+  font-family: Arial, Helvetica, sans-serif;
+  cursor: pointer;
+  
+}
+
+/* LIGHT GREY LINE FOR THE USERBAR */
+.lightline {
+  border-top: 1px solid var(--color-lightline);
+  border-bottom: 0px;
+  padding: 0px;
+  margin-left: 12px; margin-right: 12px; margin-bottom: 2px; margin-top: 5px;
+}
+
+/* PROJECTBAR COMPONENT ------------------------------------------------------------------------  */
+
+.projectbar { /* content of the projectbar */
+  position: fixed; 
+  top: 46px; /*pushes the projectbar down the height of the topbar*/
+  right: 0;
+  bottom: 0;
+  width: 250px;
+  background-color: var(--color-sidebar);
+  border-left: 1px solid var(--color-sidebar-border);
+}
+
+.projectbar ul { /*CLICKABLE LIST*/
+
+  margin: 11px; /*margin of the clickable list elements */
+  margin-top: 9px;
+  padding: 0; /* takes away the padding*/
+  list-style: none; /*takes away the bullet points */
+}  
+
+/*font of the projectbar clickable list*/
+.projectbar a { /* font styling of the clickable list */
+  display: block;
+  padding: 11px 12px; /* distance from the border */
+  margin-top: 1px;
+  background-image: none;
+  padding-left: 13px ; /*distance of the text from the border, to let some space for the image*/
+
+  text-decoration: none; /* takes away the underline */
+  color: var(--color-text); /*color of the text*/
+  background-color: var(--color-block); /*background of the block*/
+  border: 1px solid var(--color-userbar-border); /* Add a light gray border */
+  font-family: Arial, Helvetica, sans-serif;
+  cursor: pointer;
+  
+}
+
+.projectbar a:hover { /*makes the blocks of the clickable list grey when we put the mouse on them*/
+  background-color: var(--color-button);
+}
+
+  /*hides the uprojectbar when clicking on the menu button*/ 
+   /*TO-DO: WHEN WE HAVE THE MAINSCREEN MAKE IT RESIZE THE MAINSCREEN ACCORDING TO THE BAR*/
+   .projectbar.hide {
+    width: 0px;
+  }
+
+  .projectbar.hide ul,
+  .projectbar.hide .psmallarrow,
+.projectbar.hide .projectheader,
+.projectbar.hide .pheadericon {
+  display: none;
+}
+
+/*CENTER CONTAINER ------------------------------------------------------------------------------- */
+
+.main-screen {
+  padding-top: 56px;
+  padding-left: 300px;
+  background-color: var(--black);
+  /*left: 250px;*/
+  /*top: 46px;*/
+  bottom: 0;
+  right: 0;
+}
+
+/*FONTS ------------------------------------------------------------------------------- */
+
+  span {
+    font-weight: bold;
+    font-family:Arial, Helvetica, sans-serif;
+    color: var(--color-text);
+    float: left;
+    font-size: 16px;
+    margin-top: 17px;
+  }
+
+  .span2 {
+    font-weight: 400;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: var(--color-text);
+    float: left;
+    font-size: 16px;
+    margin-top: 2px;
+  }
+
+  /* Home of the userbar*/
+
+  .home {
+    --c: var(--color-gradient); /* the color of the gradient when putting the mouse on it */
+    margin-top: 0px;
+    margin-bottom: 3px;
+    color: var(--color-home-font); /* base color of the font*/
+    font-family: system-ui, sans-serif;
+    font-size: 20px;
+    padding: 10px; /* distance from the left border */
+
+ 
+    padding-left: 115px ; /*distance of the text from the border, to let some space for the image*/
+    
+    /* makes the text purple when we click on it */
+    background: 
+      linear-gradient(90deg,var(--c) 50%,#000 0) calc(100% - var(--_p,0%))/200% 100%;
+    -webkit-background-clip: text,padding-box;
+            background-clip: text,padding-box;
+    transition: 0.5s;
+
+    cursor: pointer; /*listens to the mouse*/
+  }
+ 
+  .home:hover {--_p: 100%} /*defines the behaviour of the text when we click on it*/
+
+
+  /* Header font 4 of the userbar*/
+
+  .userheader {
+    --s: 0.1em;   /* the thickness of the colored line */
+    --c: var(--color-gradient); /* the color of the gradient when putting the mouse on it */
+    margin-top: 6px;
+    margin-bottom: 0px;
+    color: var(--color-home-font); /* base color of the font*/
+    font-family: system-ui, sans-serif;
+    font-size: 20px;
+    padding: 10px; /* distance from the left border */
+    padding-left: 40px ; /*distance of the text from the border, to let some space for the image*/
+    
+    /* makes the text purple when we click on it */
+    background: 
+      linear-gradient(90deg,var(--c) 50%,#000 0) calc(100% - var(--_p,0%))/200% 100%,
+      linear-gradient(var(--c) 0 0) 0% 100%/var(--_p,0%) var(--s) no-repeat;
+    -webkit-background-clip: text,padding-box;
+            background-clip: text,padding-box;
+    transition: 0.5s;
+
+    cursor: pointer; /*listens to the mouse*/
+  }
+ 
+  .userheader:hover {--_p: 100%} /*defines the behaviour of the text when we click on it*/
+
+  /*copy of the headerfont for the projectbar*/
+  
+  .projectheader {
+    --s: 0.1em;   /* the thickness of the colored line */
+    --c: var(--color-gradient); /* the color of the gradient when putting the mouse on it */
+    margin-top: 6px;
+    margin-bottom: 0px;
+    color: var(--color-home-font); /* base color of the font*/
+    font-family: system-ui, sans-serif;
+    font-size: 20px;
+    padding: 10px; /* distance from the left border */
+    padding-left: 50px ; /*distance of the text from the border, to let some space for the image*/
+    
+    /* makes the text purple when we click on it */
+    background: 
+      linear-gradient(90deg,var(--c) 50%,#000 0) calc(100% - var(--_p,0%))/200% 100%,
+      linear-gradient(var(--c) 0 0) 0% 100%/var(--_p,0%) var(--s) no-repeat;
+    -webkit-background-clip: text,padding-box;
+            background-clip: text,padding-box;
+    transition: 0.5s;
+
+    cursor: pointer; /*listens to the mouse*/
+  }
+ 
+  .projectheader:hover {--_p: 100%} /*defines the behaviour of the text when we click on it*/
+
+
+
+  /* BUTTONS ------------------------------------------------------------------------ */
+
+  .logoutbutton {
+    background-image: url('../../html/images/logout.png');
+    background-repeat: no-repeat;
+    background-position: 10px;
+    background-size: 20px;
+    padding: 5px 20px;
+    padding-left: 40px;
+    font-family:'Courier New', Courier, monospace;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    color: white;
+    background-color: var(--color-gradient);
+    border-radius: 5px; /*rounds the corners*/
+    border: none;
+    cursor: pointer;
+    margin-left: 13px;
+    margin-top: 9px;
+  }
+  
+  .logoutbutton:hover {
+    background-color: var(--color-setting-button-hover);
+  }
+  
+  .settingsbutton {
+    background-image: url('../../html/images/settings.png');
+    background-repeat: no-repeat;
+    background-position: 65px;
+    background-size: 20px;
+    padding: 5px 80px;
+    padding-left: 95px;
+    font-family:'Courier New', Courier, monospace;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    color: white;
+    background-color: var(--color-setting-button);
+    border-radius: 5px; /*rounds the corners*/
+    border: none;
+    cursor: pointer;
+    margin-left: 10px;
+    margin-top: 0px;
+    margin-bottom: 12px;
+  }
+
+  .settingsbutton:hover {
+    background-color: var(--color-setting-button-hover);
+  }
+  
+  /* IMAGES ---------------------------------------------------------------------------------------------------*/ 
+
+  .profilePicture { /* Specifies the standard size and position of the profile picture */
+    float: left;
+    margin-top: 18px;
+    margin-left: 15px;
+    margin-right: 15px; /* to add some space between the image and the text */
+    margin-bottom: 14px;
+    
+    width: 70px;
+    height: 70px;
+  }
+
+  .homeicon {
+    float: left;
+    margin-top: 16px;
+    margin-left: 83px;
+    width: 25px;
+    height: 20px;
+
+  }
+
+  .headericon {
+    float: left;
+    margin-top: 18px;
+    margin-left: 10px;
+    width: 25px;
+    height: 23px;
+
+  }
+
+  .pheadericon {
+    float: left;
+    margin-top: 18px;
+    margin-left: 15px;
+    width: 25px;
+    height: 23px;
+
+  }
+
+  .smallarrow {
+    float: right;
+    margin-top: 27px;
+    padding-right: 146px;
+    width: 13px;
+    height: 13px;
+
+  }
+  
+  .psmallarrow {
+    float: right;
+    margin-top: 27px;
+    padding-right: 50px;
+    width: 13px;
+    height: 13px;
+
+  }
+  
+  .plist{
+  float: left;
+  padding-right: 9px;
+  width: 20px;
+  height: 20px;
+  }

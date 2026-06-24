@@ -1,0 +1,12 @@
+<h2>Teams List</h2>
+<div *ngFor="let team of allTeams">
+    <h2>{{ team.name }}</h2>
+    <p>{{ team.description }}</p>
+    <p> Team members: </p>
+    <div *ngFor="let user of team.teamMembers">
+        <p>{{ user.firstName }}</p>
+        <p>{{ user.lastName }}</p>
+    </div>
+
+  </div>
+  

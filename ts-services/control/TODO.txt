@@ -1,0 +1,5 @@
+create task_data_controller, team_data_controller, project_data_controller
+
+-> Build upon the work in the angular project
+
+Once all items are syncable to the DB, update the typescipt classes in the angular project to update the data accordingly

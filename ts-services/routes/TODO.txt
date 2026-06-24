@@ -1,0 +1,3 @@
+- Import the id system from the angular project in here to set ids of new items without a serial in the data_access_controller.task_data_controller.ts
+- Create team, task, project services based on the user service
+- Add more methods to the user service to get information about the user (requests)

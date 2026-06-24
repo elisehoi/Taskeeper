@@ -1,0 +1,61 @@
+<head> 
+  <link rel="stylesheet" href="../../html/sidebars/sidebars.css"> <!-- Sepcifies the path to the css file-->
+
+<!-- TOPBAR-->
+</head>
+<div class="top-bar">
+  <button class="menubutton"onclick="toggleUserbar()"></button>
+  <button class="projectbutton"onclick="toggleProjectbar()"></button>
+</div>
+<!-- Opens the userbar whn clicking on the button-->
+<script type="text/javascript"> 
+  function toggleUserbar() {
+    const userbar = document.getElementById("userbar");
+    userbar.classList.toggle("hide");
+  } 
+  function toggleProjectbar() {
+    const projectbar = document.getElementById("projectbar");
+    projectbar.classList.toggle("hide");
+  } 
+</script> 
+
+<!-- USERBAR-->
+<div class="userbar" id="userbar">
+  <img class="profilePicture" src="../../html/images/userPlaceholder.png">
+  <span>FirstName LastName</span>
+  <span class="span2">@username</span>
+  <button class="logoutbutton">Logout</button>
+  <div style="clear: both;">  <!-- Forces the text below to go under the image if the image is floating-->
+  <button class="settingsbutton">Settings</button>
+
+  <div style="clear: both;">  <!-- Forces the text below to go under the image if the image is floating-->
+  <hr class="lightline">
+  <img class="homeicon" src="../../html/images/home.png"> <h4 class="home">Home</h4>
+  <hr class="lightline">
+  <img class="headericon" src="../../html/images/todolist.png"> <h4 class="userheader">Your Full To-Do list</h4>
+  <img class="headericon" src="../../html/images/groupOf4.png"> <img class="smallarrow" src="../../html/images/arrow.png"> <h4 class="userheader">Teams</h4> 
+  <ul class="uul">
+    <li><a href="#">Team1</a></li>
+    <li><a href="#">Team2</a></li>
+    <li><a href="#">Team2</a></li>
+  </ul> 
+  <!--</div> -->
+</div>
+
+<!-- PROJECTBAR-->
+<div class="projectbar" id="projectbar">
+
+<img class="pheadericon" src="../../html/images/folder2.png"> <img class="psmallarrow" src="../../html/images/arrow.png"> <h4 class="projectheader">Your Projects</h4>
+<ul>
+  <li><a href="#"><img class="plist" src="../../html/images/project.png">Project1</a></li>
+  <li><a href="#"><img class="plist" src="../../html/images/project.png">Project2</a></li>
+  <li><a href="#"><img class="plist" src="../../html/images/project.png">Project3</a></li>
+</ul> 
+
+<img class="pheadericon" src="../../html/images/calendar.png"> <img class="psmallarrow" src="../../html/images/arrow.png"> <h4 class="projectheader">Recent tasks</h4>
+<ul>
+  <li><a href="#"><img class="plist" src="../../html/images/task.png">Task1</a></li>
+  <li><a href="#"><img class="plist" src="../../html/images/task.png">Task2</a></li>
+  <li><a href="#"><img class="plist" src="../../html/images/task.png">Task3</a></li>
+</ul> 
+</div>

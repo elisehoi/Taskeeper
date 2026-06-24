@@ -1,0 +1,203 @@
+<!-- SIDEBARS -->
+
+
+<!-- -------------------------------------------------------------------------------------------------  -->
+
+<body class="sidebarbody">
+    <div class="top-bar">
+  
+      <button class="menubutton" (click)="toggleUserbar()"></button>
+      <button class="projectbutton" (click)="toggleProjectbar()"></button>
+  
+    </div>
+    <!-- Opens the userbar whn clicking on the button-->
+  
+    <!-- USERBAR-->
+    <div class="userbar" id="userbar">
+      <img class="profilePicture" src="../../assets/images/userPlaceholder.png">
+      <span>FirstName LastName</span>
+      <span class="span2">@username</span>
+      <button class="logoutbutton" onclick="window.location.href='login'" >Logout</button> <!-- (click)="logOut()" -->
+      <div style="clear: both;">  
+        <button class="settingsbutton">Settings</button>
+      </div>
+    
+      <div style="clear: both;">  <!-- Forces the text below to go under the image if the image is floating-->
+        <hr class="lightline">
+        <img class="homeicon" src="../../assets/images/home.png"> <h4 class="home" onclick="window.location.href='home'">Home</h4>
+        <hr class="lightline">
+        <img class="headericon" src="../../assets/images/todolist.png"> <h4 class="userheader">Your Full To-Do list</h4>
+        <img class="headericon" src="../../assets/images/groupOf4.png"> <img class="smallarrow" src="../../assets/images/arrow.png"> <h4 class="userheader">Teams</h4> 
+        <ul class="uul">
+          <li *ngFor="let team of allTeams"><a href="#">{{team.name}}</a></li> 
+      
+        </ul> 
+      </div>
+    </div>
+    
+    <!-- PROJECTBAR-->
+    <div class="projectbar" id="projectbar">
+    
+    <img class="pheadericon" src="../../assets/images/folder2.png"> <img class="psmallarrow" src="../../assets/images/arrow.png"> <h4 class="projectheader">Your Projects</h4>
+    <ul>
+      <li *ngFor="let project of allGlobalProjects"><a href="#"><img class="plist" src="../../assets/images/project.png">{{project.name}}</a></li> 
+    </ul> 
+    
+    <img class="pheadericon" src="../../assets/images/calendar.png"> <img class="psmallarrow" src="../../assets/images/arrow.png"> <h4 class="projectheader" onclick="window.location.href='tasks'">Recent tasks</h4>
+    <ul>
+      <li *ngFor="let task of allTasks"><a href="tasks"><img class="plist" src="../../assets/images/task.png">{{task.name}}</a></li> 
+    </ul> 
+    </div>
+  
+  
+  
+  <!-- TASKS -->
+     <!--Task form -->
+    
+     <div class="task-form" *ngIf="isTableVisible">
+      <h2>Create a new Project:</h2>
+      <form #projectForm="ngForm" (ngSubmit)="createProject(projectForm)">
+        <div class="form-group">
+          <div>
+            <label for="task-name">Task Name:</label>
+            <input type="text" id="task-name" name="taskName" ngModel required>
+          </div>
+          <div>
+            <label for="task-Labels">Labels:</label>
+            <input type="text" id="task-labels" name="taskLabels" ngModel required>
+          </div>
+          <div>
+            <label for="task-description">Task Description:</label>
+            <textarea id="task-description" name="taskDescription" ngModel></textarea>
+          </div>
+        </div>
+        <div class="form-group">
+          <div>
+            <label for="task-status">Task Status:</label>
+            <select id="task-status" name="taskStatus" ngModel>
+              <option value="not-done">To-Do</option>
+              <option value="done">Done</option>
+            </select>
+          </div>
+          <div>
+            <label for="task-deadline">Deadline:</label>
+            <input type="date" id="task-deadline" name="taskDeadline" ngModel>
+          </div>
+          <div>
+            <label for="task-members">Assigned Members:</label>
+            <select id="task-members" name="selectedMembers" ngModel multiple>
+              <option *ngFor="let member of allUsers" [value]="member.userID">{{ member.userName }}</option>
+            </select>
+          </div>
+          <div>
+            <label for="project">Project:</label>
+            <select id="project" name="project" ngModel>
+              <option *ngFor="let project of allGlobalProjects" [value]="project.projectID">{{ project.name }}</option>
+            </select>
+          </div>
+          <button type="submit">Create Task</button>
+        </div>
+        <div class="form-group">
+        </div>
+      </form>
+    </div>
+    
+     <!--Tasks list -->
+     <div class="task-table-container" *ngIf="isTableVisible">
+      <h2>Tasks List:</h2>
+      <table class="task-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Deadline</th>
+            <th>Status</th>
+            <th>Labels</th>
+            <th>Owner</th>
+            <th>Assigned Members</th>
+            <th>Project</th>
+            <th>Edit</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- A LIST ITEM FOR EACH TASK -->
+          
+          <tr *ngFor="let task of allTasks">
+            <td>{{task.name}}</td>
+            <td>{{task.description}}</td>
+            <td>{{task.Deadline | date:'dd MMM yyyy'}}</td>
+            <td><span *ngIf="task.isDone; else todo">Done</span>
+          <ng-template #todo>To-Do</ng-template></td>
+            <td>{{task.labelsList}}</td>
+            <td>{{task.ownerUser.userName}}</td>
+            <td>
+            <ng-container *ngFor="let member of task.assignedMembers">
+              {{ member.userName }}
+              <br>
+            </ng-container>
+            </td>
+            <td><ng-container  *ngIf = "task.project!==undefined">
+              {{task.project.name}}
+              <br>
+            </ng-container>
+          </td>
+            <td><button class="edit-button" (click)="openEditingMode(task)">Edit</button></td>
+            <td><button class="delete-button" (click)="deleteTask(task)">Delete</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  
+  
+  <!-- Task form -->
+  <div class="task-form" *ngIf="task && !isTableVisible">
+    <h2>Modify Task:</h2>
+    <form #taskForm="ngForm" (ngSubmit)="modifyTask(taskForm)">
+      <div class="form-group">
+        <div>
+          <label for="task-name">Task Name:</label>
+          <input type="text" id="task-name" name="taskName" [(ngModel)]="task.name" required>
+        </div>
+        <div>
+          <label for="task-labels">Labels:</label>
+          <input type="text" id="task-labels" name="taskLabels" [(ngModel)]="task.labelsList" required>
+        </div>
+        <div>
+          <label for="task-description">Task Description:</label>
+          <textarea id="task-description" name="taskDescription" [(ngModel)]="task.description"></textarea>
+        </div>
+      </div>
+      <div class="form-group">
+        <div>
+          <label for="task-status">Task Status:</label>
+          <select id="task-status" name="taskStatus" [(ngModel)]="task.isDone">
+            <option value="not-done">To-Do</option>
+            <option value="done">Done</option>
+          </select>
+        </div>
+        <div>
+          <label for="task-deadline">Deadline:</label>
+          <input type="date" id="task-deadline" name="taskDeadline" [(ngModel)]="task.Deadline">
+        </div>
+        <div>
+          <label for="task-members">Assigned Members:</label>
+          <select id="task-members" name="selectedMembers" [(ngModel)]="task.assignedMembers" multiple>
+            <option *ngFor="let member of allUsers" [value]="member.userID">{{ member.userName }}</option>
+          </select>
+        </div>
+        <div>
+          <label for="project">Project:</label>
+          <select id="project" name="project" [(ngModel)]="task.project">
+            <option *ngFor="let project of allGlobalProjects" [value]="project.projectID">{{ project.name }}</option>
+          </select>
+        </div>
+        <button type="submit">Update Task</button>
+      </div>
+      <div class="form-group">
+      </div>
+    </form>
+  </div>
+  
+    
+    

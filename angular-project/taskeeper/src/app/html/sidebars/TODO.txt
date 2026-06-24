@@ -1,0 +1,3 @@
+-Implement buttons on the "Teams" "Your projects" and "Recent tasks" to hide and show the lists.
+-Set buttons links to other html pages
+-Add search bar on the topbar
