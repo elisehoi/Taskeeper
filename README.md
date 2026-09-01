@@ -1,4 +1,10 @@
-# Taskeeper - Information systems development university project (2022)
+# 🚨 Early University Project — 2022-2023
+
+**Note:** This project was completed in 2022-2023 at the beginning of my Bachelor's studies in Computer Science. It represents an early stage of my development as a software engineer and was created before I had formal training in many software-engineering principles and practices.
+
+The repository is kept public as part of my development history and reflects the technologies and concepts I was working with at that stage of my studies.
+
+# Taskeeper - Information systems development university project (2022-2023)
 
 Taskeeper is a full-stack task management web application that lets users organize personal to-do items, group work into projects, and collaborate with teammates. It is built with an **Angular 15** frontend and a **Node.js / Express** backend written in TypeScript, backed by a **PostgreSQL** database.
 
